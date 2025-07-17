@@ -53,3 +53,60 @@ You can test the working of the project using Postman.
 - Trigger summary generation using a request to the summary endpoint.
 
 - Receive AI-generated responses from the DeepSeek R1 model via OpenRouter.
+
+---
+
+## Example 
+
+#  1. Create a User
+Endpoint:
+
+POST http://localhost:3000/users
+
+Body (JSON):
+
+json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+
+- The expected response will be
+- {
+  "id": 1,
+  "name": "Alice",
+  "email": "alice@example.com"
+
+}
+
+# 2 .Topic endpoint
+- {
+  "user_id": 1,
+  "name": "Math - Calculus",
+  "tags": ["math", "calculus", "integration"]
+  }
+- with response like
+- {
+  "id": 1,
+  "userid": 1,
+  "name": "Math - Calculus",
+  "tags": ["math", "calculus", "integration"]
+
+}
+
+# 3 .Study session that triggers AI summary
+
+- {
+  "topicid": 1,
+  "notes": "Derivatives and integrals were covered with examples",
+  "duration": 45
+  }
+- response like
+- {
+  "id": 1,
+  "topicid": 1,
+  "notes": "Derivatives and integrals were covered with examples",
+  "summary": "your ai summary will be generated here",
+  "duration": 45
+}
